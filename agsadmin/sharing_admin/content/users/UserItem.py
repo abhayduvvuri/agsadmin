@@ -47,3 +47,16 @@ class UserItem(Item):
     def update_thumbnail(self, updated_thumbnail_info):
         r = self._create_operation_request(self, "updateThumbnail", method="POST", data=updated_thumbnail_info)
         return send_session_request(self._session, r).json()
+
+    def check_status(self):
+        r = self._create_operation_request(self, "status", method="POST")
+        return send_session_request(self._session, r).json()
+    
+    def add_part(self, item):
+        r = self._create_operation_request(self, "addPart", method="POST", data=item)
+        return send_session_request(self._session, r).json()
+
+    def commit(self):
+        r = self._create_operation_request(self, "commit", method="POST")
+        return send_session_request(self._session, r).json()
+

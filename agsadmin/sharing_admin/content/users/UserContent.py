@@ -25,3 +25,13 @@ class UserContent(UserContentBase):
 
     def get_folder(self, folder_id):
         return UserFolderContent(self._session, self._url_full, self.username, folder_id)
+    
+    # This service can only be used for Vector Tile Services
+    def replace_service(self, item):
+        r = self._create_operation_request(self, "replaceService", method = "POST", data = item)
+        return send_session_request(self._session, r).json()
+    
+    def publish(self, item):
+        r = self._create_operation_request(self, "publish", method="POST", data=item)
+        return send_session_request(self._session, r).json()
+

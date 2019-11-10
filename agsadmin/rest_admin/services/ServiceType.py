@@ -14,6 +14,7 @@ class ServiceType(Enum):
     GLOBE_SERVER = "GlobeServer"
     SEARCH_SERVER = "SearchServer"
     VECTOR_TILE_SERVER = "VectorTileServer"
+    FEATURE_SERVER = "FeatureServer"
 
     @staticmethod
     def _get_proxy(service_type):
@@ -26,6 +27,7 @@ class ServiceType(Enum):
         from .GlobeServer import GlobeServer
         from .SearchServer import SearchServer
         from .VectorTileServer import VectorTileServer
+        from .FeatureServer import FeatureServer
 
         _type_map = {
             ServiceType.MAP_SERVER: MapServer,
@@ -36,7 +38,8 @@ class ServiceType(Enum):
             ServiceType.GEOMETRY_SERVER: GeometryServer,
             ServiceType.GLOBE_SERVER: GlobeServer,
             ServiceType.SEARCH_SERVER: SearchServer,
-            ServiceType.VECTOR_TILE_SERVER: VectorTileServer
+            ServiceType.VECTOR_TILE_SERVER: VectorTileServer,
+            ServiceType.FEATURE_SERVER: FeatureServer
         }
 
         service_type = ServiceType(service_type)
